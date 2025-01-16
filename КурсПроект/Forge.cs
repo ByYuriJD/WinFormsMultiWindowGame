@@ -26,7 +26,7 @@ namespace КурсПроект {
         private int toolProgress = -1;
 
         //Имена и цены проектов
-        public int[,] itemPrices = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 4, 4, 0, 0 } };
+        public int[,] itemPrices = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
 
         private Main main;
         public void setMain(Main main) {

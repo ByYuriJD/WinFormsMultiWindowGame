@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
@@ -89,6 +90,7 @@ namespace КурсПроект {
             if (efficiency == 0)
                 return;
             health -= efficiency;
+            setBackground();
 
             if (health <= 0) { //Смерть
                 main.resourceMined(cardType, this);
@@ -96,6 +98,21 @@ namespace КурсПроект {
                 return;
             }
             cardDelayStart = time;
+        }
+
+        private void setBackground() {
+            switch (health) {
+                case 3:
+                    button1.BackgroundImage = Image.FromFile("../images/break1.png");
+                    break;
+                case 2:
+                    button1.BackgroundImage = Image.FromFile("../images/break2.png");
+                    break;
+                case 1:
+                    button1.BackgroundImage = Image.FromFile("../images/break3.png");
+                    break;
+
+            }
         }
 
         private int get_efficiency() {

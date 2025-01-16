@@ -28,7 +28,7 @@ namespace КурсПроект {
 
         //Имена и цены проектов
         private String[] projectNames = ["Поле", "Кузница", "Топор?", "Кирка?", "Меч?", "Печь"];
-        private int[,] projectPrices = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 1 }, { 0, 0, 0, 1 }, { 0, 0, 0, 1 }, { 8, 8, 3, 0 } };
+        private int[,] projectPrices = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 1 }, { 0, 0, 0, 1 }, { 0, 0, 0, 1 }, { 0, 0, 0, 0 } };
 
         //Размер окна в различные периоды игры
         private int[] mainWinWidth = { 155, 260, 370, 460, 580 };
@@ -48,6 +48,7 @@ namespace КурсПроект {
         private field field;
         private Forge forge;
         private Tools tools;
+        private Refinery refinery;
 
         //Остовшееся время до конца постройки
         public int ticsUntilBuilt = 0;
@@ -201,7 +202,7 @@ namespace КурсПроект {
                 } else {
                     newCard.setType("Stone");
                 }
-            } else if (progress < 6) {
+            } else if (progress < 4) {
                 if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 6.0) {
                     newCard.setType("Ore");
                 } else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {
@@ -411,7 +412,7 @@ namespace КурсПроект {
 
                     projectButton.Enabled = false;
                     break;
-                case 2: 
+                case 2:  //топор
                     tools = new Tools();
                     tools.setMain(this);
                     tools.Show();
@@ -436,6 +437,25 @@ namespace КурсПроект {
                     spawnResource("Enemy");
                     //Уменьшает период
                     resourceSpawner.Interval = 5200;
+
+                    break;
+                case 5:
+
+                    //Размер главы руда
+                    MaximumSize = new Size(mainWinWidth[4], Height);
+                    Width = mainWinWidth[4];
+                    MinimumSize = new Size(Width, Height);
+
+                    projectButton.Enabled = true;
+
+                    refinery = new Refinery();
+                    refinery.setMain(this);
+                    refinery.Show();
+                    refinery.Location = new Point(295, 360);
+
+
+                    //Уменьшает период
+                    resourceSpawner.Interval = 5000;
 
                     break;
 

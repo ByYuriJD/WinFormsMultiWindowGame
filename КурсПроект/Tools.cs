@@ -17,7 +17,7 @@ namespace КурсПроект {
         private const int HTCLIENT = 0x1;
         private const int HTCAPTION = 0x2;
 
-        public int[] toolCooldowns = { 0, 0, 0 };
+        public int[] toolCooldowns = { 0, 0, 0, 0 };
         public int[] baseCooldowns = {300, 350, 500, 500};
 
         private Main main;

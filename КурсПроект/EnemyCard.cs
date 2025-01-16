@@ -58,6 +58,7 @@ namespace КурсПроект {
             switch (item) {
                 case 2:
                     health--;
+                    setBackground();
 
                     main.toolUsed();
                     cardDelayStart = time;
@@ -67,6 +68,20 @@ namespace КурсПроект {
                 main.enemyKilled(this);
                 Close();
                 return;
+            }
+        }
+        private void setBackground() {
+            switch (health) {
+                case 3:
+                    button1.BackgroundImage = Image.FromFile("../images/break1.png");
+                    break;
+                case 2:
+                    button1.BackgroundImage = Image.FromFile("../images/break2.png");
+                    break;
+                case 1:
+                    button1.BackgroundImage = Image.FromFile("../images/break3.png");
+                    break;
+
             }
         }
 

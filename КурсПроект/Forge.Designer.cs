@@ -35,7 +35,7 @@
             // 
             // buttonLeft
             // 
-            buttonLeft.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            buttonLeft.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonLeft.Location = new Point(12, 12);
             buttonLeft.Name = "buttonLeft";
             buttonLeft.Size = new Size(40, 38);
@@ -46,7 +46,7 @@
             // 
             // buttonRight
             // 
-            buttonRight.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            buttonRight.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonRight.Location = new Point(254, 12);
             buttonRight.Name = "buttonRight";
             buttonRight.Size = new Size(41, 38);
@@ -59,6 +59,7 @@
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.AliceBlue;
             label1.Location = new Point(103, 53);
             label1.Name = "label1";
@@ -70,7 +71,7 @@
             // startForge
             // 
             startForge.BackColor = SystemColors.ButtonFace;
-            startForge.Font = new Font("Segoe UI", 10F);
+            startForge.Font = new Font("Showcard Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             startForge.Location = new Point(58, 12);
             startForge.Name = "startForge";
             startForge.Size = new Size(190, 38);
@@ -82,6 +83,7 @@
             // priceLabel
             // 
             priceLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            priceLabel.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             priceLabel.ForeColor = Color.AliceBlue;
             priceLabel.Location = new Point(12, 80);
             priceLabel.Name = "priceLabel";
@@ -107,7 +109,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(299, 112);
+            ClientSize = new Size(295, 108);
             ControlBox = false;
             Controls.Add(progressBar1);
             Controls.Add(priceLabel);
