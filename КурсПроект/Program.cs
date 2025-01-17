@@ -1,14 +1,32 @@
 namespace КурсПроект {
 	internal static class Program {
-		/// <summary>
-		///  The main entry point for the application.
-		/// </summary>
-		[STAThread]
+
+		static Main main = null;
 		static void Main() {
-			// To customize application configuration such as set high DPI settings or default font,
-			// see https://aka.ms/applicationconfiguration.
-			ApplicationConfiguration.Initialize();
-			Application.Run(new Main());
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			main = new Main();
+
+			main.FormClosing += gameFinished;
+			Application.Run(main);
+		}
+		public static void gameFinished(object sender, EventArgs e) {
+			if (main.DialogResult == DialogResult.Retry) {
+				startGame();
+				Application.Exit();
+				Application.Restart();
+				main = null;
+			}
+		}
+		private static void startGame() {
+			if (main != null) 
+				main.Dispose();
+			main = new Main();
+			main.FormClosing += gameFinished;
+
+			if (main != null) {
+				Application.Exit();
+			}
 		}
 	}
 }

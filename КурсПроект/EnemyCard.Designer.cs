@@ -33,11 +33,11 @@
 			// progressBar1
 			// 
 			progressBar1.Dock = DockStyle.Bottom;
-			progressBar1.Location = new Point(0, 155);
+			progressBar1.Location = new Point(0, 151);
 			progressBar1.Margin = new Padding(0, 4, 0, 4);
 			progressBar1.MarqueeAnimationSpeed = 1;
 			progressBar1.Name = "progressBar1";
-			progressBar1.Size = new Size(126, 15);
+			progressBar1.Size = new Size(122, 15);
 			progressBar1.TabIndex = 3;
 			progressBar1.Value = 100;
 			// 
@@ -51,7 +51,7 @@
 			button1.Location = new Point(0, 0);
 			button1.Margin = new Padding(0, 4, 0, 4);
 			button1.Name = "button1";
-			button1.Size = new Size(126, 170);
+			button1.Size = new Size(122, 166);
 			button1.TabIndex = 2;
 			button1.Text = resources.GetString("button1.Text");
 			button1.UseVisualStyleBackColor = false;
@@ -67,7 +67,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(126, 170);
+			ClientSize = new Size(122, 166);
 			ControlBox = false;
 			Controls.Add(progressBar1);
 			Controls.Add(button1);
@@ -80,6 +80,7 @@
 			ShowIcon = false;
 			ShowInTaskbar = false;
 			TopMost = true;
+			Load += EnemyCard_Load;
 			ResumeLayout(false);
 		}
 

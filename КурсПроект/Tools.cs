@@ -18,7 +18,7 @@ namespace КурсПроект {
         private const int HTCAPTION = 0x2;
 
         public int[] toolCooldowns = { 0, 0, 0, 0 };
-        public int[] baseCooldowns = {300, 350, 500, 500};
+        public int[] baseCooldowns = {300, 350, 400, 400};
 
         private Main main;
         public void setMain(Main main) {
@@ -50,7 +50,8 @@ namespace КурсПроект {
                 toolCooldown.Value = 0;
                 toolCooldown.Value = 0;
             } else {
-                toolCooldown.Value = Math.Min(300, (int)Single.Lerp(300, 0, (float)((float)Math.Pow(toolCooldowns[main.getToolIndex()], 1.5) / (float)Math.Pow(300, 1.5))));
+                toolCooldown.Maximum = baseCooldowns[index];
+                toolCooldown.Value = Math.Min(baseCooldowns[index], (int)Single.Lerp(baseCooldowns[index], 0, (float)((float)Math.Pow(toolCooldowns[main.getToolIndex()], 1.5) / (float)Math.Pow(baseCooldowns[index], 1.5))));
                 toolCooldown.Value = Math.Max(toolCooldown.Value - 1, 0);
                 toolCooldown.Value = toolCooldown.Value + 1;
             }
@@ -63,8 +64,13 @@ namespace КурсПроект {
         }
 
         public void useTool() {
-            toolCooldowns[main.getToolIndex()] = 300;
+            toolCooldowns[main.getToolIndex()] = baseCooldowns[main.getToolIndex()];
             updateMenu();
+        }
+        public void resetAllCooldowns() {
+            for (int i = 0; i < toolCooldowns.Length; i++) {
+                toolCooldowns[i] = baseCooldowns[i];
+            }
         }
 
         public Tools() {
@@ -97,10 +103,11 @@ namespace КурсПроект {
                 }
 
                 if (main.toolDurability[i] != 0 && i == main.getToolIndex()) {
-                    toolCooldown.Value = Math.Min(300, (int)Single.Lerp(300, 0, (float)((float)Math.Pow(toolCooldowns[main.getToolIndex()], 1.5) / (float)Math.Pow(300, 1.5))));
-                    toolCooldown.Value = Math.Max(toolCooldown.Value - 1, 0);
-                    toolCooldown.Value = toolCooldown.Value + 1;
-                } 
+					toolCooldown.Maximum = baseCooldowns[i];
+					toolCooldown.Value = Math.Min(baseCooldowns[i], (int)Single.Lerp(baseCooldowns[i], 0, (float)((float)Math.Pow(toolCooldowns[main.getToolIndex()], 1.5) / (float)Math.Pow(baseCooldowns[i], 1.5))));
+					toolCooldown.Value = Math.Max(toolCooldown.Value - 1, 0);
+					toolCooldown.Value = toolCooldown.Value + 1;
+				} 
             }
         }
 

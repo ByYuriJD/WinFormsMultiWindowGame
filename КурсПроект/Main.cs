@@ -527,6 +527,9 @@ namespace КурсПроект {
 					gameTimer.Enabled = false;
 
 					Controls.Clear();
+
+					GameOverControl gameOverControl = new GameOverControl(gameTimeMs);
+					Controls.Add(gameOverControl);
 					break;
 
 			}

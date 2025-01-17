@@ -33,11 +33,11 @@
 			// progressBar1
 			// 
 			progressBar1.Dock = DockStyle.Bottom;
-			progressBar1.Location = new Point(0, 143);
+			progressBar1.Location = new Point(0, 139);
 			progressBar1.Margin = new Padding(0);
 			progressBar1.MarqueeAnimationSpeed = 1;
 			progressBar1.Name = "progressBar1";
-			progressBar1.Size = new Size(108, 15);
+			progressBar1.Size = new Size(104, 15);
 			progressBar1.TabIndex = 5;
 			progressBar1.Value = 100;
 			// 
@@ -50,7 +50,7 @@
 			button1.ForeColor = Color.Azure;
 			button1.Location = new Point(0, 0);
 			button1.Name = "button1";
-			button1.Size = new Size(108, 158);
+			button1.Size = new Size(104, 154);
 			button1.TabIndex = 4;
 			button1.Text = resources.GetString("button1.Text");
 			button1.UseVisualStyleBackColor = false;
@@ -66,7 +66,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(108, 158);
+			ClientSize = new Size(104, 154);
 			ControlBox = false;
 			Controls.Add(progressBar1);
 			Controls.Add(button1);
