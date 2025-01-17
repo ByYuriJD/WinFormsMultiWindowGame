@@ -55,7 +55,9 @@ namespace КурсПроект {
                 toolCooldown.Value = toolCooldown.Value + 1;
             }
 
-            toolHealth.Value = main.toolDurability[index] * 100;
+            toolHealth.Maximum = main.toolMaxDurability[index] * 100;
+
+			toolHealth.Value = main.toolDurability[index] * 100;
             toolHealth.Value = Math.Max(toolHealth.Value - 1, 0);
             toolHealth.Value = main.toolDurability[index] * 100;
         }

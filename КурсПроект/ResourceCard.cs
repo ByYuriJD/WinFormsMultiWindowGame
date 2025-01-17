@@ -101,18 +101,18 @@ namespace КурсПроект {
         }
 
         private void setBackground() {
-            switch (health) {
-                case 3:
-                    button1.BackgroundImage = Image.FromFile("../images/break1.png");
-                    break;
-                case 2:
-                    button1.BackgroundImage = Image.FromFile("../images/break2.png");
-                    break;
-                case 1:
-                    button1.BackgroundImage = Image.FromFile("../images/break3.png");
-                    break;
+            //switch (health) {
+            //    case 3:
+            //        button1.BackgroundImage = Image.FromFile("../images/break1.png");
+            //        break;
+            //    case 2:
+            //        button1.BackgroundImage = Image.FromFile("../images/break2.png");
+            //        break;
+            //    case 1:
+            //        button1.BackgroundImage = Image.FromFile("../images/break3.png");
+            //        break;
 
-            }
+            //}
         }
 
         private int get_efficiency() {

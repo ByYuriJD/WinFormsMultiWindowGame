@@ -117,13 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="resourceSpawner.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="button1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="button1.Text" xml:space="preserve">
+    <value>
+
+                ’’„)’ ìhƒìƒhó’                          
+             )2  ’                    ’„„ì)’„           
+            )„    ’„„))’’            ’’)      ))’       
+          ’)’     ’                     ’„ì„’    )ó     
+          „      ’  ’                       ì      ’’   
+       )’           ’„ ’„’       ’) )„             ’ )  
+      „)„’’’ ì’                          ’„’        )„  
+   ì)         ’                             ’ ’’     ’)’
+   ’Ö’’ì )’’’  ’           )„„’’’’                    ’’
+      ƒÖÖ¶ÖÖh)ì’„ ’                      ’’  ’  ’’ ’’)O 
+                ’ƒ„  ) ’’ ’ ’ƒ      ’„      )„  )  ì    
+                    )’ ’ó’’   „„’„    ’ó’               
+                   ƒ„ƒ „   ))))    )                    
+                    óƒ ’)     „))’                      
+                   ƒO’   ’   ’ ƒ  ì                     
+                ’ ƒ          „ ì )                      
+               ì)     „„       ì„                       
+             )         )’       ’’  ’                   
+            ì ’                   „’ ’                  
+         )ƒ’ ’          ’’„  ’     ’„ ’„)ƒ„             
+    ’)ì) ’’                 ’)„’’)  ’’   ’’ƒ            
+                 ’’’’’’             ’’)) ’’             
+</value>
+  </data>
+  <metadata name="worldTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </metadata>
-  <metadata name="buildTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>161, 17</value>
-  </metadata>
-  <metadata name="gameTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>272, 17</value>
   </metadata>
 </root>

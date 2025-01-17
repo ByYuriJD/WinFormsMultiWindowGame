@@ -18,7 +18,7 @@ namespace КурсПроект {
         private int ghostOffset = 0; //Шатание карты
         private Point origin = Point.Empty; //Положение карты
         private Main main; //Глава
-        private int health = 4;
+        private int health = 2;
 
 
 
@@ -71,18 +71,18 @@ namespace КурсПроект {
             }
         }
         private void setBackground() {
-            switch (health) {
-                case 3:
-                    button1.BackgroundImage = Image.FromFile("../images/break1.png");
-                    break;
-                case 2:
-                    button1.BackgroundImage = Image.FromFile("../images/break2.png");
-                    break;
-                case 1:
-                    button1.BackgroundImage = Image.FromFile("../images/break3.png");
-                    break;
+            //switch (health) {
+            //    case 3:
+            //        button1.BackgroundImage = Image.FromFile("../images/break1.png");
+            //        break;
+            //    case 2:
+            //        button1.BackgroundImage = Image.FromFile("../images/break2.png");
+            //        break;
+            //    case 1:
+            //        button1.BackgroundImage = Image.FromFile("../images/break3.png");
+            //        break;
 
-            }
+            //}
         }
 
         public override bool Equals(object? obj) {
