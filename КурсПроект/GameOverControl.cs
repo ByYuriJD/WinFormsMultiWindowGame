@@ -20,19 +20,13 @@ namespace КурсПроект {
 		}
 		private void GameOverControl_Load(object sender, EventArgs e) {
 			endButton.Enabled = false;
-			restartButton.Enabled = false;
 		}
 		private void endButton_Click(object sender, EventArgs e) {
 			ParentForm.DialogResult = DialogResult.Cancel;
 			ParentForm.Close();
 		}
-		private void restartButton_Click(object sender, EventArgs e) {
-			ParentForm.DialogResult = DialogResult.Retry;
-			ParentForm.Close();
-		}
 		private void dontQuitTimer_Tick(object sender, EventArgs e) {
 			endButton.Enabled=true;
-			restartButton.Enabled=true;
 			dontQuitTimer.Enabled = false;
 		}
 

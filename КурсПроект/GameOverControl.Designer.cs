@@ -27,7 +27,6 @@
 			leftPanel = new Panel();
 			buttonsPanel = new Panel();
 			endButton = new Button();
-			restartButton = new Button();
 			label1 = new Label();
 			fullDock = new Panel();
 			timeLabel = new Label();
@@ -50,7 +49,6 @@
 			// buttonsPanel
 			// 
 			buttonsPanel.Controls.Add(endButton);
-			buttonsPanel.Controls.Add(restartButton);
 			buttonsPanel.Dock = DockStyle.Fill;
 			buttonsPanel.Location = new Point(0, 40);
 			buttonsPanel.Name = "buttonsPanel";
@@ -62,25 +60,13 @@
 			// 
 			endButton.DialogResult = DialogResult.Cancel;
 			endButton.Dock = DockStyle.Bottom;
-			endButton.Location = new Point(10, 32);
+			endButton.Location = new Point(10, 62);
 			endButton.Name = "endButton";
 			endButton.Size = new Size(141, 30);
 			endButton.TabIndex = 1;
 			endButton.Text = "Выйти";
 			endButton.UseVisualStyleBackColor = true;
 			endButton.Click += endButton_Click;
-			// 
-			// restartButton
-			// 
-			restartButton.DialogResult = DialogResult.Retry;
-			restartButton.Dock = DockStyle.Bottom;
-			restartButton.Location = new Point(10, 62);
-			restartButton.Name = "restartButton";
-			restartButton.Size = new Size(141, 30);
-			restartButton.TabIndex = 0;
-			restartButton.Text = "Заново";
-			restartButton.UseVisualStyleBackColor = true;
-			restartButton.Click += restartButton_Click;
 			// 
 			// label1
 			// 
@@ -141,7 +127,6 @@
 		private Panel fullDock;
 		private Label timeLabel;
 		private Panel buttonsPanel;
-		private Button restartButton;
 		private Button endButton;
 		private System.Windows.Forms.Timer dontQuitTimer;
 	}

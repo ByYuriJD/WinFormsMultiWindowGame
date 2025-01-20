@@ -24,51 +24,20 @@
 		/// </summary>
 		private void InitializeComponent() {
 			components = new System.ComponentModel.Container();
-			buttonLeft = new Button();
-			buttonRight = new Button();
-			label1 = new Label();
 			toolCooldown = new ProgressBar();
 			toolHealth = new ProgressBar();
 			toolCooldownTimer = new System.Windows.Forms.Timer(components);
+			flowLayoutPanel1 = new FlowLayoutPanel();
+			buttonAxe = new Button();
+			buttonPick = new Button();
+			buttonSword = new Button();
+			buttonShield = new Button();
+			flowLayoutPanel1.SuspendLayout();
 			SuspendLayout();
-			// 
-			// buttonLeft
-			// 
-			buttonLeft.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			buttonLeft.Location = new Point(10, 9);
-			buttonLeft.Margin = new Padding(3, 2, 3, 2);
-			buttonLeft.Name = "buttonLeft";
-			buttonLeft.Size = new Size(33, 45);
-			buttonLeft.TabIndex = 0;
-			buttonLeft.Text = "<";
-			buttonLeft.UseVisualStyleBackColor = true;
-			buttonLeft.Click += buttonLeft_Click;
-			// 
-			// buttonRight
-			// 
-			buttonRight.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			buttonRight.Location = new Point(221, 9);
-			buttonRight.Margin = new Padding(3, 2, 3, 2);
-			buttonRight.Name = "buttonRight";
-			buttonRight.Size = new Size(33, 45);
-			buttonRight.TabIndex = 1;
-			buttonRight.Text = ">";
-			buttonRight.UseVisualStyleBackColor = true;
-			buttonRight.Click += buttonRight_Click;
-			// 
-			// label1
-			// 
-			label1.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label1.Location = new Point(107, 9);
-			label1.Name = "label1";
-			label1.Size = new Size(47, 27);
-			label1.TabIndex = 2;
-			label1.Text = "label1";
-			label1.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// toolCooldown
 			// 
-			toolCooldown.Location = new Point(49, 38);
+			toolCooldown.Location = new Point(48, 50);
 			toolCooldown.Margin = new Padding(3, 2, 3, 2);
 			toolCooldown.Maximum = 300;
 			toolCooldown.Name = "toolCooldown";
@@ -77,12 +46,13 @@
 			// 
 			// toolHealth
 			// 
-			toolHealth.Location = new Point(10, 58);
+			toolHealth.Dock = DockStyle.Bottom;
+			toolHealth.Location = new Point(4, 63);
 			toolHealth.Margin = new Padding(3, 2, 3, 2);
 			toolHealth.MarqueeAnimationSpeed = 1000;
 			toolHealth.Maximum = 1000;
 			toolHealth.Name = "toolHealth";
-			toolHealth.Size = new Size(244, 20);
+			toolHealth.Size = new Size(257, 20);
 			toolHealth.TabIndex = 4;
 			// 
 			// toolCooldownTimer
@@ -91,6 +61,63 @@
 			toolCooldownTimer.Interval = 20;
 			toolCooldownTimer.Tick += toolCooldownTimer_Tick;
 			// 
+			// flowLayoutPanel1
+			// 
+			flowLayoutPanel1.Controls.Add(buttonAxe);
+			flowLayoutPanel1.Controls.Add(buttonPick);
+			flowLayoutPanel1.Controls.Add(buttonSword);
+			flowLayoutPanel1.Controls.Add(buttonShield);
+			flowLayoutPanel1.Dock = DockStyle.Top;
+			flowLayoutPanel1.Location = new Point(4, 4);
+			flowLayoutPanel1.Name = "flowLayoutPanel1";
+			flowLayoutPanel1.Padding = new Padding(35, 0, 0, 0);
+			flowLayoutPanel1.Size = new Size(257, 41);
+			flowLayoutPanel1.TabIndex = 5;
+			// 
+			// buttonAxe
+			// 
+			buttonAxe.Dock = DockStyle.Top;
+			buttonAxe.Location = new Point(38, 3);
+			buttonAxe.Name = "buttonAxe";
+			buttonAxe.Size = new Size(38, 38);
+			buttonAxe.TabIndex = 0;
+			buttonAxe.Text = " <|\r\n  |";
+			buttonAxe.UseVisualStyleBackColor = true;
+			buttonAxe.Click += buttonAxe_Click;
+			// 
+			// buttonPick
+			// 
+			buttonPick.Dock = DockStyle.Top;
+			buttonPick.Location = new Point(82, 3);
+			buttonPick.Name = "buttonPick";
+			buttonPick.Size = new Size(38, 38);
+			buttonPick.TabIndex = 1;
+			buttonPick.Text = "- .\r\n /  `";
+			buttonPick.UseVisualStyleBackColor = true;
+			buttonPick.Click += buttonPick_Click;
+			// 
+			// buttonSword
+			// 
+			buttonSword.Dock = DockStyle.Top;
+			buttonSword.Location = new Point(126, 3);
+			buttonSword.Name = "buttonSword";
+			buttonSword.Size = new Size(38, 38);
+			buttonSword.TabIndex = 2;
+			buttonSword.Text = "_A_\r\n|";
+			buttonSword.UseVisualStyleBackColor = true;
+			buttonSword.Click += buttonSword_Click;
+			// 
+			// buttonShield
+			// 
+			buttonShield.Dock = DockStyle.Top;
+			buttonShield.Location = new Point(170, 3);
+			buttonShield.Name = "buttonShield";
+			buttonShield.Size = new Size(38, 38);
+			buttonShield.TabIndex = 3;
+			buttonShield.Text = "{o}";
+			buttonShield.UseVisualStyleBackColor = true;
+			buttonShield.Click += buttonShield_Click;
+			// 
 			// Tools
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -98,30 +125,31 @@
 			BackColor = Color.Tan;
 			ClientSize = new Size(265, 87);
 			ControlBox = false;
+			Controls.Add(flowLayoutPanel1);
 			Controls.Add(toolHealth);
 			Controls.Add(toolCooldown);
-			Controls.Add(label1);
-			Controls.Add(buttonRight);
-			Controls.Add(buttonLeft);
 			FormBorderStyle = FormBorderStyle.FixedSingle;
 			Margin = new Padding(3, 2, 3, 2);
 			MaximizeBox = false;
 			MdiChildrenMinimizedAnchorBottom = false;
 			MinimizeBox = false;
 			Name = "Tools";
+			Padding = new Padding(4);
 			ShowInTaskbar = false;
 			TopMost = true;
 			Load += Tools_Load;
+			flowLayoutPanel1.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
 		#endregion
-
-		private Button buttonLeft;
-        private Button buttonRight;
-        private Label label1;
-        private ProgressBar toolCooldown;
+		private ProgressBar toolCooldown;
         private ProgressBar toolHealth;
         private System.Windows.Forms.Timer toolCooldownTimer;
-    }
+		private FlowLayoutPanel flowLayoutPanel1;
+		private Button buttonAxe;
+		private Button buttonPick;
+		private Button buttonSword;
+		private Button buttonShield;
+	}
 }

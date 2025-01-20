@@ -41,10 +41,10 @@ namespace КурсПроект {
             base.WndProc(ref m);
         }
         private void startButton_Click(object sender, EventArgs e) {
-            if (refineProgress != -1 || !main.hasResource(0, 0, 0, 0))
+            if (refineProgress != -1 || !main.hasResource(3, 0, 1, 0))
                 return;
-            main.setWoodCount(main.woodCount - 0);
-            main.setOreCount(main.stoneCount - 0);
+            main.setWoodCount(main.woodCount - 3);
+            main.setOreCount(main.stoneCount - 1);
 
             startButton.Enabled = false;
             worldTimer.Enabled = true;

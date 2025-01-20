@@ -17,8 +17,8 @@ namespace КурсПроект {
 		//Хранит уровень прогресса пользователя (сколько зданий построено)
 		private int progress = 0;
 
-		private int progressTime = 0;
-		private int extraProgressTime = 0;
+		private int progressTime = 400;
+		private int extraProgressTime = 100;
 
 		//Ресурсы
 		public int woodCount = 0;
@@ -32,9 +32,9 @@ namespace КурсПроект {
 		private String[] projectNames = ["Поле", "Кузница", "Топор?", "Кирка?",
 										 "Меч?", "Печь", "Древнее древо", "Вечный валун",
 										 "Дом"];
-		private int[,] projectPrices = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 1 }, { 0, 0, 0, 1 },
-										 { 0, 0, 0, 1 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 },
-										 { 0, 0, 0, 0 } };
+		private int[,] projectPrices = { { 0, 0, 0, 0 }, { 3, 0, 0, 0 }, { 0, 0, 0, 1 }, { 0, 0, 0, 1 },
+										 { 0, 0, 0, 1 }, { 4, 8, 2, 0 }, { 15, 12, 2, 4 }, { 16, 20, 3, 6 },
+										 { 50, 50, 5, 10 } };
 
 		//Размер окна в различные периоды игры
 		private int[] mainWinWidth = { 155, 260, 370, 460, 580 };
@@ -225,7 +225,7 @@ namespace КурсПроект {
 					spawnEnemyInstead();
 
 					return;
-				} else if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 6.0) {
+				} else if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 3.0) {
 					newCard.setType("Ore");
 				} else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {
 					newCard.setType("Wood");
@@ -233,7 +233,7 @@ namespace КурсПроект {
 					newCard.setType("Stone");
 				}
 
-				if (enemyCooldown > 0) 
+				if (enemyCooldown > 0)
 					enemyCooldown -= 1;
 			}
 
@@ -359,7 +359,9 @@ namespace КурсПроект {
 				return;
 			}
 			//Прогрес
-			buildBar.Value = Math.Min(100, (int)Single.Lerp(0, 100, (float)(Math.Pow(600 + 200 * progress, 1.5) - Math.Pow(ticsUntilBuilt, 1.5)) / (float)Math.Pow(600 + 200 * progress, 1.5)));
+			buildBar.Value = Math.Min(100, (int)Single.Lerp(0, 100, (float)(Math.Pow(progressTime + extraProgressTime * progress, 1.5) -
+				Math.Pow(ticsUntilBuilt, 1.5)) / (float)Math.Pow(progressTime + extraProgressTime * progress, 1.5)));
+
 			buildBar.Value = Math.Max(0, buildBar.Value - 1);
 			buildBar.Value = Math.Min(105, buildBar.Value + 1);
 
@@ -389,7 +391,7 @@ namespace КурсПроект {
 					res.cardDelayStart = res.time;
 				}
 			}
-
+			tools.resetAllCooldowns();
 		}
 
 
@@ -585,6 +587,14 @@ namespace КурсПроект {
 
 		private void gameTimer_Tick(object sender, EventArgs e) {
 			gameTimeMs += 1;
+		}
+
+		private void woodLabel_Click(object sender, EventArgs e) {
+			//setWoodCount(woodCount + 1);
+		}
+
+		private void stoneLabel_Click(object sender, EventArgs e) {
+			//setStoneCount(stoneCount + 1);
 		}
 	}
 }

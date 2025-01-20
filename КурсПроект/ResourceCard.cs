@@ -97,7 +97,10 @@ namespace КурсПроект {
                 Close();
                 return;
             }
-            cardDelayStart = time;
+
+            if (time - cardDelayStart > cardDelay)
+                cardDelayStart = time;
+            else cardDelayStart = time - 20;
         }
 
         private void setBackground() {
@@ -123,7 +126,7 @@ namespace КурсПроект {
                 case 0: {
                         if (cardType == "Wood") {
                             main.toolUsed();
-                            return 3;
+                            return 4;
                         }
                         if (cardType == "Ore")
                             return 0;

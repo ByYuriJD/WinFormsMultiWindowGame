@@ -54,6 +54,7 @@
 			woodLabel.TabIndex = 0;
 			woodLabel.Text = "Дерево";
 			woodLabel.TextAlign = ContentAlignment.MiddleCenter;
+			woodLabel.Click += woodLabel_Click;
 			// 
 			// oreLabel
 			// 
@@ -128,6 +129,7 @@
 			stoneLabel.TabIndex = 5;
 			stoneLabel.Text = "Камень";
 			stoneLabel.TextAlign = ContentAlignment.MiddleCenter;
+			stoneLabel.Click += stoneLabel_Click;
 			// 
 			// resourceSpawner
 			// 
