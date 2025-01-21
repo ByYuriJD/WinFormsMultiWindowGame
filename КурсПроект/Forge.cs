@@ -26,7 +26,7 @@ namespace КурсПроект {
 		private int toolProgress = -1;
 
 		//Имена и цены проектов
-		public int[,] itemPrices = { { 1, 1, 0, 0 }, { 2, 2, 0, 0 }, { 2, 2, 1, 0 }, { 3, 1, 0, 0 } };
+		public int[,] itemPrices = { { 1, 1, 0, 0 }, { 2, 2, 0, 0 }, { 1, 2, 1, 0 }, { 1, 2, 0, 0 } };
 
 		private Main main;
 		public void setMain(Main main) {
@@ -53,10 +53,13 @@ namespace КурсПроект {
 
 		public void updateMenu() {
 			int progress = main.getProgress();
-			buttonAxe.Enabled = true;
-			buttonPick.Enabled = progress > 2;
-			buttonSword.Enabled = progress > 3;
-			buttonShield.Enabled = progress > 4;
+			bool progressNotStarted = toolProgress == -1;
+
+
+            buttonAxe.Enabled = progressNotStarted;
+			buttonPick.Enabled = progress > 2 && progressNotStarted;
+			buttonSword.Enabled = progress > 3 && progressNotStarted;
+			buttonShield.Enabled = progress > 4 && progressNotStarted;
 
 
 			startForge.Text = main.getToolName(index);

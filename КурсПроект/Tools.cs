@@ -44,7 +44,7 @@ namespace КурсПроект {
 			buttonAxe.Enabled = true;
 			buttonPick.Enabled = progress > 3;
 			buttonSword.Enabled = progress > 4;
-			buttonShield.Enabled = progress > 5;
+			buttonShield.Enabled = progress > 4;
 
 
 			if (main.toolDurability[index] == 0) {

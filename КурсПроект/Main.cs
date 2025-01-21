@@ -33,8 +33,8 @@ namespace КурсПроект {
 										 "Меч?", "Печь", "Древнее древо", "Вечный валун",
 										 "Дом"];
 		private int[,] projectPrices = { { 0, 0, 0, 0 }, { 3, 0, 0, 0 }, { 0, 0, 0, 1 }, { 0, 0, 0, 1 },
-										 { 0, 0, 0, 1 }, { 4, 8, 2, 0 }, { 15, 12, 2, 4 }, { 16, 20, 3, 6 },
-										 { 50, 50, 5, 10 } };
+										 { 0, 0, 0, 1 }, { 4, 8, 2, 0 }, { 12, 10, 2, 4 }, { 14, 16, 3, 6 },
+										 { 30, 30, 5, 10 } };
 
 		//Размер окна в различные периоды игры
 		private int[] mainWinWidth = { 155, 260, 370, 460, 580 };
@@ -225,7 +225,7 @@ namespace КурсПроект {
 					spawnEnemyInstead();
 
 					return;
-				} else if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 3.0) {
+				} else if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 6.0) {
 					newCard.setType("Ore");
 				} else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {
 					newCard.setType("Wood");
@@ -278,7 +278,7 @@ namespace КурсПроект {
 		}
 
 		//Рес получен
-		public void resourceMined(String type, Form card) {
+		public void resourceMined(String type, Form card, bool toolUsed) {
 			//Убирает рес и массива
 			for (int i = 0; i < 12; i++) {
 				if (resources[i] == card) {
@@ -290,7 +290,7 @@ namespace КурсПроект {
 			//добавляет рес к счёту
 			switch (type) {
 				case "Wood": {
-						setWoodCount(woodCount + 1);
+						setWoodCount(woodCount + 1 + Convert.ToInt32(toolUsed));
 						break;
 					}
 				case "Ore": {
@@ -298,7 +298,7 @@ namespace КурсПроект {
 						break;
 					}
 				case "Stone": {
-						setStoneCount(stoneCount + 1);
+						setStoneCount(stoneCount + 1 + Convert.ToInt32(toolUsed));
 						break;
 					}
 			}
@@ -455,14 +455,14 @@ namespace КурсПроект {
 					spawnResource("Ore");
 
 					//Уменьшает период
-					resourceSpawner.Interval = 5500;
+					resourceSpawner.Interval = 8500;
 					break;
 				case 4: // Меч
 					projectButton.Enabled = true;
 
 					spawnResource("Enemy");
 					//Уменьшает период
-					resourceSpawner.Interval = 5200;
+					resourceSpawner.Interval = 7500;
 
 					break;
 				case 5: // Печь
@@ -481,7 +481,7 @@ namespace КурсПроект {
 
 
 					//Уменьшает период
-					resourceSpawner.Interval = 5000;
+					resourceSpawner.Interval = 7000;
 
 					break;
 				case 6: // Древнее древо
@@ -588,8 +588,21 @@ namespace КурсПроект {
 		private void gameTimer_Tick(object sender, EventArgs e) {
 			gameTimeMs += 1;
 		}
+        public static void Shake(Form form) {
+            var original = form.Location;
+            var rnd = new Random();
+            int shakeAmplitude = 4;
+            int duration = rnd.Next(4, 8);
+            for (int i = 0; i < duration; i++){
+                form.Location = new Point(original.X + rnd.Next(-shakeAmplitude, shakeAmplitude), original.Y + rnd.Next(-shakeAmplitude, shakeAmplitude));
 
-		private void woodLabel_Click(object sender, EventArgs e) {
+                System.Threading.Thread.Sleep(20);
+                shakeAmplitude = (int)Single.Lerp(4, 1, (float)i / duration);
+            }
+            form.Location = original;
+        }
+
+        private void woodLabel_Click(object sender, EventArgs e) {
 			//setWoodCount(woodCount + 1);
 		}
 

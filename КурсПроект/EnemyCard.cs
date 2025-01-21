@@ -20,9 +20,11 @@ namespace КурсПроект {
 		private Main main; //Глава
 		private int health = 2;
 
+        Random rnd = new Random();
+        int shakeAmount;
 
 
-		private int cooldown = 510;
+        private int cooldown = 510;
 		public void setOrigin(Point point) {
 			origin = point;
 		}
@@ -40,17 +42,23 @@ namespace КурсПроект {
 			progressBar1.Value = Math.Max(0, progressBar1.Value - 1);
 			progressBar1.Value = Math.Min(100, progressBar1.Value + 1);
 
+			if (time - cardDelayStart >= cooldown) {
+				main.attacked();
+				cardDelayStart = time;
+			}
 
 			//Анимация
 			ghostOffset = (int)(Math.Cos(time / 30.0) * 5);
-			this.Location = new Point(origin.X + ghostOffset,
-				origin.Y);
-
-			if (cardDelayStart + cooldown <= time + 5) {
-				cardDelayStart = time;
-				main.attacked();
-			}
-		}
+            Point ghostOrigin = new Point(origin.X,
+                origin.Y + ghostOffset);
+            if (shakeAmount != 0) {
+                int shakeAmplitude = shakeAmount / 4;
+                Location = new Point(ghostOrigin.X + rnd.Next(-shakeAmplitude, shakeAmplitude), ghostOrigin.Y + rnd.Next(-shakeAmplitude, shakeAmplitude));
+                shakeAmount--;
+                return;
+            }
+            Location = ghostOrigin;
+        }
 		private void button1_Click(object sender, EventArgs e) {
 			if (!main.toolFunctional())
 				return;
@@ -64,25 +72,27 @@ namespace КурсПроект {
 					cardDelayStart = time;
 					break;
 			}
+			setBackground();
 			if (health <= 0) {
 				main.enemyKilled(this);
 				Close();
 				return;
-			}
-		}
+            }
+            shakeAmount = rnd.Next(8, 12);
+        }
 		private void setBackground() {
-			//switch (health) {
-			//    case 3:
-			//        button1.BackgroundImage = Image.FromFile("../images/break1.png");
-			//        break;
-			//    case 2:
-			//        button1.BackgroundImage = Image.FromFile("../images/break2.png");
-			//        break;
-			//    case 1:
-			//        button1.BackgroundImage = Image.FromFile("../images/break3.png");
-			//        break;
+			switch (health) {
+				case 3:
+					button1.BackgroundImage = Image.FromFile("../../../break1.png");
+					break;
+				case 2:
+					button1.BackgroundImage = Image.FromFile("../../../break2.png");
+					break;
+				case 1:
+					button1.BackgroundImage = Image.FromFile("../../../break3.png");
+					break;
 
-			//}
+			}
 		}
 
 		public override bool Equals(object? obj) {

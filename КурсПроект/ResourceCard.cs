@@ -1,6 +1,7 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace КурсПроект {
@@ -17,6 +18,10 @@ namespace КурсПроект {
         public int cardDelayStart;
 
         private int health = 4; //Здоровье
+        private bool toolUsed = false;
+
+        Random rnd = new Random();
+        int shakeAmount;
 
         //Сеттеры
         public void setOrigin(Point point) {
@@ -77,8 +82,15 @@ namespace КурсПроект {
 
             //Анимация
             ghostOffset = (int)(Math.Cos(time / 30.0) * 5);
-            this.Location = new Point(origin.X,
+            Point ghostOrigin = new Point(origin.X,
                 origin.Y + ghostOffset);
+            if (shakeAmount != 0) {
+                int shakeAmplitude = shakeAmount / 4;
+                Location = new Point(ghostOrigin.X + rnd.Next(-shakeAmplitude, shakeAmplitude), ghostOrigin.Y + rnd.Next(-shakeAmplitude, shakeAmplitude));
+                shakeAmount--;
+                return;
+            }
+            Location = ghostOrigin;
         }
 
         //Кнопка
@@ -92,8 +104,10 @@ namespace КурсПроект {
             health -= efficiency;
             setBackground();
 
+            if (efficiency > 1) toolUsed = true;
+
             if (health <= 0) { //Смерть
-                main.resourceMined(cardType, this);
+                main.resourceMined(cardType, this, toolUsed);
                 Close();
                 return;
             }
@@ -101,21 +115,23 @@ namespace КурсПроект {
             if (time - cardDelayStart > cardDelay)
                 cardDelayStart = time;
             else cardDelayStart = time - 20;
+
+            shakeAmount = rnd.Next(8,12);
         }
 
         private void setBackground() {
-            //switch (health) {
-            //    case 3:
-            //        button1.BackgroundImage = Image.FromFile("../images/break1.png");
-            //        break;
-            //    case 2:
-            //        button1.BackgroundImage = Image.FromFile("../images/break2.png");
-            //        break;
-            //    case 1:
-            //        button1.BackgroundImage = Image.FromFile("../images/break3.png");
-            //        break;
+            switch (health) {
+                case 3:
+                    button1.BackgroundImage = Image.FromFile("../../..//break1.png");
+                    break;
+                case 2:
+                    button1.BackgroundImage = Image.FromFile("../../..//break2.png");
+                    break;
+                case 1:
+                    button1.BackgroundImage = Image.FromFile("../../..//break3.png");
+                    break;
 
-            //}
+            }
         }
 
         private int get_efficiency() {
@@ -150,7 +166,6 @@ namespace КурсПроект {
                     }
             }
         }
-
         private void progressBar1_Click(object sender, EventArgs e) {
 
         }

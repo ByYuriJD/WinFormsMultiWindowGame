@@ -20,7 +20,11 @@ namespace КурсПроект {
 		//Время восстановления
 		public int cardDelay = 460;
 		public int cardDelayStart;
-		public StoneFarm() {
+
+        Random rnd = new Random();
+        int shakeAmount;
+
+        public StoneFarm() {
 			InitializeComponent();
 		}
 		public void StoneFarm_load() {
@@ -54,11 +58,18 @@ namespace КурсПроект {
 			progressBar1.Value = Math.Min(100, progressBar1.Value + 1);
 
 
-			//Анимация
-			ghostOffset = (int)(Math.Cos(time / 30.0) * 5);
-			this.Location = new Point(origin.X,
-				origin.Y + ghostOffset);
-		}
+            //Анимация
+            ghostOffset = (int)(Math.Cos(time / 30.0) * 5);
+            Point ghostOrigin = new Point(origin.X,
+                origin.Y + ghostOffset);
+            if (shakeAmount != 0) {
+                int shakeAmplitude = shakeAmount / 4;
+                Location = new Point(ghostOrigin.X + rnd.Next(-shakeAmplitude, shakeAmplitude), ghostOrigin.Y + rnd.Next(-shakeAmplitude, shakeAmplitude));
+                shakeAmount--;
+                return;
+            }
+            Location = ghostOrigin;
+        }
 		//Кнопка
 		private void button1_Click(object sender, EventArgs e) {
 			if (time - cardDelayStart < cardDelay - 5) //Идёт восстановление
@@ -67,11 +78,12 @@ namespace КурсПроект {
 			if (main.getToolIndex() != 1)
 				return;
 
-			main.setStoneCount(main.stoneCount + 1);
+			main.setStoneCount(main.stoneCount + 2);
 			main.toolUsed();
 
 			cardDelayStart = time;
-		}
+            shakeAmount = rnd.Next(8, 12);
+        }
 		public override bool Equals(object? obj) {
 			if (!(obj is String))
 				return false;

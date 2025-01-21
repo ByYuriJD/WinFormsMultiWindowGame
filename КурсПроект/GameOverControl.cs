@@ -14,9 +14,8 @@ namespace КурсПроект {
 			InitializeComponent();
 			timeLabel.Text = "Время: ";
 
-			int minutes = gameTime / 6000;
-			gameTime = gameTime % 6000;
-			timeLabel.Text += minutes.ToString() + " мин, " + (gameTime / 100).ToString() + " сек";
+			int minutes = gameTime / 60;
+			timeLabel.Text += minutes.ToString() + " мин, " + (gameTime % 60).ToString() + " сек";
 		}
 		private void GameOverControl_Load(object sender, EventArgs e) {
 			endButton.Enabled = false;
