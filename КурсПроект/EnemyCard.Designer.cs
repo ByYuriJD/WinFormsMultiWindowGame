@@ -28,16 +28,18 @@
 			progressBar1 = new ProgressBar();
 			button1 = new Button();
 			worldTimer = new System.Windows.Forms.Timer(components);
+			swordNeeded = new Label();
+			cardDelay = new System.Windows.Forms.Timer(components);
 			SuspendLayout();
 			// 
 			// progressBar1
 			// 
 			progressBar1.Dock = DockStyle.Bottom;
-			progressBar1.Location = new Point(0, 151);
+			progressBar1.Location = new Point(0, 141);
 			progressBar1.Margin = new Padding(0, 4, 0, 4);
 			progressBar1.MarqueeAnimationSpeed = 1;
 			progressBar1.Name = "progressBar1";
-			progressBar1.Size = new Size(122, 15);
+			progressBar1.Size = new Size(112, 15);
 			progressBar1.TabIndex = 3;
 			progressBar1.Value = 100;
 			// 
@@ -51,7 +53,7 @@
 			button1.Location = new Point(0, 0);
 			button1.Margin = new Padding(0, 4, 0, 4);
 			button1.Name = "button1";
-			button1.Size = new Size(122, 166);
+			button1.Size = new Size(112, 156);
 			button1.TabIndex = 2;
 			button1.Text = resources.GetString("button1.Text");
 			button1.UseVisualStyleBackColor = false;
@@ -60,15 +62,34 @@
 			// worldTimer
 			// 
 			worldTimer.Enabled = true;
-			worldTimer.Interval = 5;
+			worldTimer.Interval = 30;
 			worldTimer.Tick += worldTimer_Tick;
+			// 
+			// swordNeeded
+			// 
+			swordNeeded.BackColor = Color.IndianRed;
+			swordNeeded.BorderStyle = BorderStyle.Fixed3D;
+			swordNeeded.Font = new Font("Showcard Gothic", 7F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			swordNeeded.Location = new Point(0, 0);
+			swordNeeded.Name = "swordNeeded";
+			swordNeeded.Size = new Size(32, 30);
+			swordNeeded.TabIndex = 4;
+			swordNeeded.Text = "_A_\r\n|";
+			swordNeeded.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// cardDelay
+			// 
+			cardDelay.Enabled = true;
+			cardDelay.Interval = 15;
+			cardDelay.Tick += cardDelay_Tick;
 			// 
 			// EnemyCard
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(122, 166);
+			ClientSize = new Size(112, 156);
 			ControlBox = false;
+			Controls.Add(swordNeeded);
 			Controls.Add(progressBar1);
 			Controls.Add(button1);
 			FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -76,6 +97,7 @@
 			MaximizeBox = false;
 			MdiChildrenMinimizedAnchorBottom = false;
 			MinimizeBox = false;
+			MinimumSize = new Size(122, 166);
 			Name = "EnemyCard";
 			ShowIcon = false;
 			ShowInTaskbar = false;
@@ -89,5 +111,7 @@
 		private ProgressBar progressBar1;
         private Button button1;
         private System.Windows.Forms.Timer worldTimer;
-    }
+		private Label swordNeeded;
+		private System.Windows.Forms.Timer cardDelay;
+	}
 }

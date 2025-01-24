@@ -13,81 +13,96 @@ using Microsoft.VisualBasic;
 
 namespace КурсПроект {
 	public partial class EnemyCard : Form {
-		private int cardDelayStart;
+
 		private int time = 0; //Время с начала
+
 		private int ghostOffset = 0; //Шатание карты
 		private Point origin = Point.Empty; //Положение карты
 		private Main main; //Глава
-		private int health = 2;
 
-        Random rnd = new Random();
-        int shakeAmount;
+		private int health = 2; //Здоровье
 
+		//Для тряски
+		Random rnd = new Random();
+		int shakeAmount;
 
-        private int cooldown = 510;
+		//Время восстановления для атаки
+		public int baseCardDelay = 510;
+		public int currentCardDelay;
+
+		//Сеттеры
 		public void setOrigin(Point point) {
 			origin = point;
 		}
 		public void setMain(Main main) {
 			this.main = main;
 		}
+
 		public EnemyCard() {
 			InitializeComponent();
+			currentCardDelay = baseCardDelay;
 		}
+
+		//Время прооцесса
 		private void worldTimer_Tick(object sender, EventArgs e) {
 			time++;
 
 			//Восстановление
-			progressBar1.Value = Math.Min(100, (int)Single.Lerp(0, 100, (float)(time - cardDelayStart) / cooldown));
+			progressBar1.Value = Math.Min(100, (int)Single.Lerp(0, 100, 1 - (float)currentCardDelay / baseCardDelay));
 			progressBar1.Value = Math.Max(0, progressBar1.Value - 1);
 			progressBar1.Value = Math.Min(100, progressBar1.Value + 1);
 
-			if (time - cardDelayStart >= cooldown) {
+			//Аттака при восстановлении
+			if (currentCardDelay <= 0) {
 				main.attacked();
-				cardDelayStart = time;
+				currentCardDelay = baseCardDelay;
 			}
 
 			//Анимация
-			ghostOffset = (int)(Math.Cos(time / 30.0) * 5);
-            Point ghostOrigin = new Point(origin.X,
-                origin.Y + ghostOffset);
-            if (shakeAmount != 0) {
-                int shakeAmplitude = shakeAmount / 4;
-                Location = new Point(ghostOrigin.X + rnd.Next(-shakeAmplitude, shakeAmplitude), ghostOrigin.Y + rnd.Next(-shakeAmplitude, shakeAmplitude));
-                shakeAmount--;
-                return;
-            }
-            Location = ghostOrigin;
-        }
-		private void button1_Click(object sender, EventArgs e) {
-			if (!main.toolFunctional())
+			ghostOffset = (int)(Math.Cos(time / 15.0) * 5);
+			Point ghostOrigin = new Point(origin.X,
+				origin.Y + ghostOffset);
+			if (shakeAmount != 0) {
+				int shakeAmplitude = shakeAmount / 4;
+				Location = new Point(ghostOrigin.X + rnd.Next(-shakeAmplitude, shakeAmplitude), ghostOrigin.Y + rnd.Next(-shakeAmplitude, shakeAmplitude));
+				shakeAmount--;
 				return;
-			int item = main.getToolIndex();
-			switch (item) {
-				case 2:
-					health--;
-					setBackground();
-
-					main.toolUsed();
-					cardDelayStart = time;
-					break;
 			}
-			setBackground();
+			Location = ghostOrigin;
+		}
+
+		//Восстановление
+		private void cardDelay_Tick(object sender, EventArgs e) {
+			currentCardDelay--;
+		}
+
+		//Нажатие на врага
+		private void button1_Click(object sender, EventArgs e) {
+
+			//Используется меч, он не востанавливается
+			if ( main.getToolIndex() != 2 || !main.toolFunctional())
+				return; 
+			
+			//Здоровье
+			health--;
 			if (health <= 0) {
 				main.enemyKilled(this);
 				Close();
 				return;
-            }
-            shakeAmount = rnd.Next(8, 12);
-        }
+			}
+
+			// Другой функционал
+			currentCardDelay = baseCardDelay;
+			main.toolUsed();
+
+			//Визуальные эффекты
+			setBackground();
+			shakeAmount = rnd.Next(8, 12);
+		}
+
+		//Заменяет фон взависимости от здоровья
 		private void setBackground() {
 			switch (health) {
-				case 3:
-					button1.BackgroundImage = Image.FromFile("../../../break1.png");
-					break;
-				case 2:
-					button1.BackgroundImage = Image.FromFile("../../../break2.png");
-					break;
 				case 1:
 					button1.BackgroundImage = Image.FromFile("../../../break3.png");
 					break;
@@ -95,6 +110,7 @@ namespace КурсПроект {
 			}
 		}
 
+		//Проверка на то, что карта - враг
 		public override bool Equals(object? obj) {
 			if (!(obj is String))
 				return false;
@@ -102,8 +118,7 @@ namespace КурсПроект {
 		}
 
 		private void EnemyCard_Load(object sender, EventArgs e) {
-
-			cooldown = 510 - 30 * (main.getProgress() - 5);
 		}
+
 	}
 }

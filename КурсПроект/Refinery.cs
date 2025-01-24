@@ -17,13 +17,15 @@ namespace КурсПроект {
         private const int HTCLIENT = 0x1;
         private const int HTCAPTION = 0x2;
 
-
+        //Время до создания железа
         private int refineProgress = -1;
 
+        //Глава
         private Main main;
         public void setMain(Main main) {
             this.main = main;
         }
+
         public Refinery() {
             InitializeComponent();
         }
@@ -40,20 +42,24 @@ namespace КурсПроект {
 
             base.WndProc(ref m);
         }
+        //Начало обработки
         private void startButton_Click(object sender, EventArgs e) {
             if (refineProgress != -1 || !main.hasResource(3, 0, 1, 0))
                 return;
             main.setWoodCount(main.woodCount - 3);
-            main.setOreCount(main.stoneCount - 1);
+            main.setOreCount(main.oreCount - 1);
 
             startButton.Enabled = false;
             worldTimer.Enabled = true;
             refineProgress = 1000;
         }
+        //Процесс обработки
         private void worldTimer_Tick(object sender, EventArgs e) {
             progressBar.Value = Math.Min(1000, (int)Single.Lerp(200, 0, (float)(Math.Pow(refineProgress, 1.5) / (float)Math.Pow(1000, 1.5))));
             progressBar.Value = Math.Max(progressBar.Value - 1, 0);
             progressBar.Value = progressBar.Value + 1;
+
+            //Прогресс
             refineProgress--;
             if (refineProgress < 0) {
                 refineProgress = -1;

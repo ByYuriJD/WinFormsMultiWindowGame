@@ -83,12 +83,10 @@ namespace КурсПроект {
 			toolIndex = value;
 		}
 
-		//Инструменты
+		//Инструмент создан
 		public void toolBuilt(int toolId) {
-			toolDurability[toolId] = toolMaxDurability[toolId];
 
-
-
+			//Продолжение игры при создании инструментов
 			if (progress == 2)
 				progressGame();
 			else if (progress == 3 && toolId == 1) {
@@ -96,12 +94,18 @@ namespace КурсПроект {
 			} else if (progress == 4 && toolId == 2) {
 				progressGame();
 			}
+
+			toolDurability[toolId] = toolMaxDurability[toolId];
+			tools.toolCooldowns[toolId] = 0;
+
+			//Обновление меню
 			tools.updateMenu();
 		}
+		//Проверка на работу инструмента
 		public bool toolFunctional() {
-			return toolDurability[toolIndex] != 0 && tools.toolCooldowns[toolIndex] <= 10;
-
+			return toolDurability[toolIndex] != 0 && tools.toolCooldowns[toolIndex] <= 0;
 		}
+		//Использование инструмента
 		public void toolUsed() {
 			if (toolDurability[toolIndex] <= 0)
 				return;
@@ -109,6 +113,7 @@ namespace КурсПроект {
 			tools.useTool();
 		}
 
+		//Отображение всех меню
 		public void updateMenus() {
 			if (progress < 2) {
 				return;
@@ -176,7 +181,7 @@ namespace КурсПроект {
 			Point fieldPos = field.Location;
 
 
-			if (chosenResource != "") {
+			if (chosenResource != "") { //Добавление определённых ресурсов
 
 				if (chosenResource == "Enemy") {
 					newCard.Close();
@@ -210,7 +215,7 @@ namespace КурсПроект {
 				} else {
 					newCard.setType("Stone");
 				}
-			} else if (progress < 4) {
+			} else if (progress < 4) {//Кирка
 				if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 6.0) {
 					newCard.setType("Ore");
 				} else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {
@@ -218,18 +223,18 @@ namespace КурсПроект {
 				} else {
 					newCard.setType("Stone");
 				}
-			} else {
-				if (enemyCount == 0 && enemyCooldown == 0) {
+			} else {//Меч
+				if (enemyCount == 0 && enemyCooldown == 0) {//Враг || Враг только появляется после определённого появления ресурсов
 					newCard.Close();
 					enemyCooldown = -1;
 					spawnEnemyInstead();
 
 					return;
-				} else if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 6.0) {
+				} else if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 4.0) {//Руда
 					newCard.setType("Ore");
-				} else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {
+				} else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {//Дерево
 					newCard.setType("Wood");
-				} else {
+				} else {//Камень
 					newCard.setType("Stone");
 				}
 
@@ -253,9 +258,11 @@ namespace КурсПроект {
 			newCard.Show();
 
 		}
+		//Создание врага вместо карты
 		public void spawnEnemyInstead() {
 			enemyCount++;
-			EnemyCard newCard = new EnemyCard(); //Рес-карта
+
+			EnemyCard newCard = new EnemyCard();
 			newCard.setMain(this);
 
 			field.AddOwnedForm(newCard);
@@ -277,7 +284,7 @@ namespace КурсПроект {
 			newCard.Show();
 		}
 
-		//Рес получен
+		//Рес добыт
 		public void resourceMined(String type, Form card, bool toolUsed) {
 			//Убирает рес и массива
 			for (int i = 0; i < 12; i++) {
@@ -304,6 +311,7 @@ namespace КурсПроект {
 			}
 		}
 
+		//Враг убит
 		public void enemyKilled(Form card) {
 			//Убирает рес и массива
 			for (int i = 0; i < 12; i++) {
@@ -312,12 +320,15 @@ namespace КурсПроект {
 				}
 			}
 
+			//Дополнительные ресурсы за убийство врага
 			setWoodCount(woodCount + (int)rnd.NextInt64(0, 3));
 			setStoneCount(stoneCount + (int)rnd.NextInt64(0, 3));
+			setOreCount(oreCount + 1);
 
 			resourceCount--;
 			enemyCount--;
 
+			//Количество новых ресурсов до появления врага
 			enemyCooldown = 9 - progress;
 		}
 
@@ -345,6 +356,8 @@ namespace КурсПроект {
 				setStoneCount(stoneCount - projectPrices[progress, 1]);
 				setOreCount(oreCount - projectPrices[progress, 2]);
 				setIronCount(ironCount - projectPrices[progress, 3]);
+			} else if (ticsUntilBuilt > 20) {
+				ticsUntilBuilt -= 10;
 			}
 		}
 
@@ -388,7 +401,7 @@ namespace КурсПроект {
 						continue;
 					}
 					ResourceCard res = (ResourceCard)resources[i];
-					res.cardDelayStart = res.time;
+					res.currentCardDelay = res.cardDelay;
 				}
 			}
 			tools.resetAllCooldowns();
@@ -426,7 +439,7 @@ namespace КурсПроект {
 					forge.Show();
 					forge.Location = new Point(270, 100);
 
-					//Уменьшает период
+					//Уменьшает интервал
 					resourceSpawner.Interval = 10000;
 
 					//Размер главы камень
@@ -454,7 +467,7 @@ namespace КурсПроект {
 
 					spawnResource("Ore");
 
-					//Уменьшает период
+					//Уменьшает интервал
 					resourceSpawner.Interval = 8500;
 					break;
 				case 4: // Меч
@@ -462,7 +475,7 @@ namespace КурсПроект {
 
 					spawnResource("Enemy");
 					//Уменьшает период
-					resourceSpawner.Interval = 7500;
+					resourceSpawner.Interval = 6500;
 
 					break;
 				case 5: // Печь
@@ -480,8 +493,8 @@ namespace КурсПроект {
 					refinery.Location = new Point(295, 360);
 
 
-					//Уменьшает период
-					resourceSpawner.Interval = 7000;
+					//Уменьшает интервал
+					resourceSpawner.Interval = 6000;
 
 					break;
 				case 6: // Древнее древо
@@ -585,29 +598,17 @@ namespace КурсПроект {
 			}
 		}
 
+		//Сколько времени заняля игра
 		private void gameTimer_Tick(object sender, EventArgs e) {
 			gameTimeMs += 1;
 		}
-        public static void Shake(Form form) {
-            var original = form.Location;
-            var rnd = new Random();
-            int shakeAmplitude = 4;
-            int duration = rnd.Next(4, 8);
-            for (int i = 0; i < duration; i++){
-                form.Location = new Point(original.X + rnd.Next(-shakeAmplitude, shakeAmplitude), original.Y + rnd.Next(-shakeAmplitude, shakeAmplitude));
-
-                System.Threading.Thread.Sleep(20);
-                shakeAmplitude = (int)Single.Lerp(4, 1, (float)i / duration);
-            }
-            form.Location = original;
-        }
 
         private void woodLabel_Click(object sender, EventArgs e) {
-			//setWoodCount(woodCount + 1);
+			setWoodCount(woodCount + 1);
 		}
 
 		private void stoneLabel_Click(object sender, EventArgs e) {
-			//setStoneCount(stoneCount + 1);
+			setStoneCount(stoneCount + 1);
 		}
 	}
 }

@@ -77,13 +77,15 @@
 			// buttonAxe
 			// 
 			buttonAxe.Dock = DockStyle.Top;
+			buttonAxe.Font = new Font("Segoe UI", 9F);
+			buttonAxe.ForeColor = Color.Black;
 			buttonAxe.Location = new Point(38, 3);
 			buttonAxe.Name = "buttonAxe";
 			buttonAxe.Size = new Size(38, 38);
 			buttonAxe.TabIndex = 0;
 			buttonAxe.Text = " <|\r\n  |";
 			buttonAxe.UseVisualStyleBackColor = true;
-			buttonAxe.Click += buttonAxe_Click;
+			buttonAxe.Click += ButtonAxe_Click;
 			// 
 			// buttonPick
 			// 
