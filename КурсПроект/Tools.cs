@@ -72,7 +72,7 @@ namespace КурсПроект {
 				toolCooldown.Value = 0;
 			} else { //Инструмент не сломан
 				toolCooldown.Maximum = baseCooldowns[index];
-				toolCooldown.Value = Math.Min(baseCooldowns[index], (int)Single.Lerp(baseCooldowns[index], 0, (float)((float)Math.Pow(toolCooldowns[main.getToolIndex()], 1.5) / (float)Math.Pow(baseCooldowns[index], 1.5))));
+				toolCooldown.Value = Math.Max(0,Math.Min(baseCooldowns[index], (int)Single.Lerp(baseCooldowns[index], 0, (float)((float)Math.Pow(toolCooldowns[main.getToolIndex()], 1.5) / (float)Math.Pow(baseCooldowns[index], 1.5)))));
 				toolCooldown.Value = Math.Max(toolCooldown.Value - 1, 0);
 				toolCooldown.Value = toolCooldown.Value + 1;
 			}

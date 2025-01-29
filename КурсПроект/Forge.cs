@@ -82,7 +82,9 @@ namespace КурсПроект {
 			if (!main.hasResource(itemPrices[index, 0], itemPrices[index, 1], itemPrices[index, 2], itemPrices[index, 3]))
 				return;
 			if (toolProgress != -1) {
-				toolProgress -= 5;
+				if (toolProgress > 5) {
+					toolProgress -= 5;
+				}
 				return;
 			}
 
@@ -107,7 +109,7 @@ namespace КурсПроект {
 
 		//Процесс создания инструмента
 		private void forgeTick_Tick(object sender, EventArgs e) {
-			progressBar1.Value = Math.Min(300, (int)Single.Lerp(300, 0, (float)(Math.Pow(toolProgress, 1.5) / (float)Math.Pow(300, 1.5))));
+			progressBar1.Value = Math.Max(0,Math.Min(300, (int)Single.Lerp(300, 0, (float)(Math.Pow(toolProgress, 1.5) / (float)Math.Pow(300, 1.5)))));
 			progressBar1.Value = Math.Max(progressBar1.Value - 1, 0);
 			progressBar1.Value = progressBar1.Value + 1;
 			toolProgress--;

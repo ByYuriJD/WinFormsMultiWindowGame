@@ -47,7 +47,9 @@ namespace КурсПроект {
             if (!main.hasResource(3, 0, 1, 0))
                 return;
 			if (refineProgress != -1) {
-                refineProgress -= 10;
+                if (refineProgress > 10) {
+					refineProgress -= 10;
+				}
                 return;
             }
 				main.setWoodCount(main.woodCount - 3);
