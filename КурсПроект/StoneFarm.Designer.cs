@@ -34,11 +34,11 @@
 			// progressBar1
 			// 
 			progressBar1.Dock = DockStyle.Bottom;
-			progressBar1.Location = new Point(0, 151);
+			progressBar1.Location = new Point(0, 147);
 			progressBar1.Margin = new Padding(0);
 			progressBar1.MarqueeAnimationSpeed = 1;
 			progressBar1.Name = "progressBar1";
-			progressBar1.Size = new Size(122, 15);
+			progressBar1.Size = new Size(118, 15);
 			progressBar1.TabIndex = 5;
 			progressBar1.Value = 100;
 			// 
@@ -51,7 +51,7 @@
 			button1.ForeColor = Color.Azure;
 			button1.Location = new Point(0, 0);
 			button1.Name = "button1";
-			button1.Size = new Size(122, 166);
+			button1.Size = new Size(118, 162);
 			button1.TabIndex = 4;
 			button1.Text = resources.GetString("button1.Text");
 			button1.UseVisualStyleBackColor = false;
@@ -75,13 +75,12 @@
 			pickNeeded.TabIndex = 6;
 			pickNeeded.Text = "- .\r\n  / `";
 			pickNeeded.TextAlign = ContentAlignment.MiddleCenter;
-			pickNeeded.Visible = false;
 			// 
 			// StoneFarm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(122, 166);
+			ClientSize = new Size(118, 162);
 			ControlBox = false;
 			Controls.Add(pickNeeded);
 			Controls.Add(progressBar1);

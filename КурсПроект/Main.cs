@@ -48,7 +48,7 @@ namespace КурсПроект {
 		//Инструменты
 		private String[] toolNames = ["Топор", "Кирка", "Меч", "Щит"];
 		public int[] toolDurability = [0, 0, 0, 0];
-		public int[] toolMaxDurability = [5, 4, 4, 4];
+		public int[] toolMaxDurability = [5, 4, 4, 8];
 		public int[] itemAccessibility = [0, 3, 4, 5, 100];
 		private int toolIndex = 0;
 
@@ -603,12 +603,20 @@ namespace КурсПроект {
 			gameTimeMs += 1;
 		}
 
-        private void woodLabel_Click(object sender, EventArgs e) {
+		private void woodLabel_Click(object sender, EventArgs e) {
 			//setWoodCount(woodCount + 1);
 		}
 
 		private void stoneLabel_Click(object sender, EventArgs e) {
 			//setStoneCount(stoneCount + 1);
+		}
+
+		private void oreLabel_Click(object sender, EventArgs e) {
+			//setOreCount(oreCount + 1);
+		}
+
+		private void ironLabel_Click(object sender, EventArgs e) {
+			//setIronCount(ironCount + 1);
 		}
 	}
 }

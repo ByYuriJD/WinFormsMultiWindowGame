@@ -75,7 +75,7 @@ namespace КурсПроект {
 			if (time - cardDelayStart < cardDelay - 5) //Идёт восстановление
 				return;
 
-			if (main.getToolIndex() != 1)
+			if (main.getToolIndex() != 1 || main.toolFunctional())
 				return;
 
 			main.setStoneCount(main.stoneCount + 2);

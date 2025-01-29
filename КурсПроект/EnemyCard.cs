@@ -81,8 +81,9 @@ namespace КурсПроект {
 
 			//Используется меч, он не востанавливается
 			if ( main.getToolIndex() != 2 || !main.toolFunctional())
-				return; 
-			
+				return;
+			main.toolUsed();
+
 			//Здоровье
 			health--;
 			if (health <= 0) {
@@ -93,7 +94,6 @@ namespace КурсПроект {
 
 			// Другой функционал
 			currentCardDelay = baseCardDelay;
-			main.toolUsed();
 
 			//Визуальные эффекты
 			setBackground();

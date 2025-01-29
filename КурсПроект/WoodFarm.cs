@@ -75,7 +75,7 @@ namespace КурсПроект {
 			if (time - cardDelayStart < cardDelay - 5) //Идёт восстановление
 				return;
 
-			if (main.getToolIndex() != 0)
+			if (main.getToolIndex() != 0 || main.toolFunctional())
 				return;
 
 			main.setWoodCount(main.woodCount+2);
