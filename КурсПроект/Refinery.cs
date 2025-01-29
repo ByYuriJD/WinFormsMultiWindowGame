@@ -44,12 +44,15 @@ namespace КурсПроект {
         }
         //Начало обработки
         private void startButton_Click(object sender, EventArgs e) {
-            if (refineProgress != -1 || !main.hasResource(3, 0, 1, 0))
+            if (!main.hasResource(3, 0, 1, 0))
                 return;
-            main.setWoodCount(main.woodCount - 3);
+			if (refineProgress != -1) {
+                refineProgress -= 10;
+                return;
+            }
+				main.setWoodCount(main.woodCount - 3);
             main.setOreCount(main.oreCount - 1);
 
-            startButton.Enabled = false;
             worldTimer.Enabled = true;
             refineProgress = 1000;
         }
@@ -65,7 +68,6 @@ namespace КурсПроект {
                 refineProgress = -1;
                 progressBar.Value = 0;
                 worldTimer.Enabled = false;
-                startButton.Enabled = true;
                 main.setIronCount(main.ironCount + 1);
             }
         }

@@ -79,8 +79,12 @@ namespace КурсПроект {
 		//Начать создание инструмента
 		private void startForge_Click(object sender, EventArgs e) {
 			//Возможность создания инструмента
-			if (toolProgress != -1 || !main.hasResource(itemPrices[index, 0], itemPrices[index, 1], itemPrices[index, 2], itemPrices[index, 3]))
+			if (!main.hasResource(itemPrices[index, 0], itemPrices[index, 1], itemPrices[index, 2], itemPrices[index, 3]))
 				return;
+			if (toolProgress != -1) {
+				toolProgress -= 5;
+				return;
+			}
 
 			//Использование ресурсов
 			main.setWoodCount(main.woodCount - itemPrices[index, 0]);
@@ -89,7 +93,6 @@ namespace КурсПроект {
 			main.setIronCount(main.ironCount - itemPrices[index, 3]);
 
 			//Процесс
-			startForge.Enabled = false;
 			forgeTick.Enabled = true;
 			toolProgress = 240;
 
@@ -111,7 +114,6 @@ namespace КурсПроект {
 			if (toolProgress < 0) {
 				toolProgress = -1;
 				progressBar1.Value = 0;
-				forgeTick.Enabled = false;
 				startForge.Enabled = true;
 				main.toolBuilt(index);
 				updateMenu();

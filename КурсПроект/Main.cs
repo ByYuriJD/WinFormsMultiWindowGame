@@ -329,7 +329,7 @@ namespace КурсПроект {
 			enemyCount--;
 
 			//Количество новых ресурсов до появления врага
-			enemyCooldown = 9 - progress;
+			enemyCooldown = 14 - progress;
 		}
 
 		//Проверка на имение рес

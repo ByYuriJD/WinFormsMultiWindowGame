@@ -39,7 +39,7 @@
 			RefineryLabel.ForeColor = Color.Cornsilk;
 			RefineryLabel.Location = new Point(9, 8);
 			RefineryLabel.Name = "RefineryLabel";
-			RefineryLabel.Size = new Size(177, 32);
+			RefineryLabel.Size = new Size(173, 32);
 			RefineryLabel.TabIndex = 0;
 			RefineryLabel.Text = "1 руд + 3 дер = 1 жел";
 			RefineryLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -52,7 +52,7 @@
 			startButton.Location = new Point(9, 40);
 			startButton.Margin = new Padding(3, 2, 3, 2);
 			startButton.Name = "startButton";
-			startButton.Size = new Size(177, 28);
+			startButton.Size = new Size(173, 28);
 			startButton.TabIndex = 1;
 			startButton.Text = "запустить печь";
 			startButton.UseVisualStyleBackColor = false;
@@ -66,7 +66,7 @@
 			panel1.Margin = new Padding(3, 2, 3, 2);
 			panel1.Name = "panel1";
 			panel1.Padding = new Padding(4, 15, 4, 0);
-			panel1.Size = new Size(177, 74);
+			panel1.Size = new Size(173, 70);
 			panel1.TabIndex = 2;
 			// 
 			// progressBar
@@ -78,12 +78,12 @@
 			progressBar.Margin = new Padding(3, 2, 3, 2);
 			progressBar.Maximum = 200;
 			progressBar.Name = "progressBar";
-			progressBar.Size = new Size(169, 59);
+			progressBar.Size = new Size(165, 55);
 			progressBar.TabIndex = 0;
 			// 
 			// worldTimer
 			// 
-			worldTimer.Interval = 10;
+			worldTimer.Interval = 15;
 			worldTimer.Tick += worldTimer_Tick;
 			// 
 			// Refinery
@@ -91,7 +91,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.ControlDarkDark;
-			ClientSize = new Size(195, 150);
+			ClientSize = new Size(191, 146);
 			ControlBox = false;
 			Controls.Add(panel1);
 			Controls.Add(startButton);
