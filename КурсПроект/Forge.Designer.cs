@@ -66,11 +66,11 @@
 			// progressBar1
 			// 
 			progressBar1.Dock = DockStyle.Bottom;
-			progressBar1.Location = new Point(5, 103);
+			progressBar1.Location = new Point(5, 108);
 			progressBar1.Margin = new Padding(3, 2, 3, 2);
 			progressBar1.Maximum = 300;
 			progressBar1.Name = "progressBar1";
-			progressBar1.Size = new Size(230, 10);
+			progressBar1.Size = new Size(223, 10);
 			progressBar1.TabIndex = 6;
 			// 
 			// forgeTick
@@ -136,9 +136,9 @@
 			// startForge
 			// 
 			startForge.Dock = DockStyle.Bottom;
-			startForge.Location = new Point(5, 78);
+			startForge.Location = new Point(5, 83);
 			startForge.Name = "startForge";
-			startForge.Size = new Size(230, 25);
+			startForge.Size = new Size(223, 25);
 			startForge.TabIndex = 8;
 			startForge.Text = "Запуск";
 			startForge.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.ControlDarkDark;
-			ClientSize = new Size(240, 118);
+			ClientSize = new Size(233, 123);
 			ControlBox = false;
 			Controls.Add(startForge);
 			Controls.Add(flowLayoutPanel1);
@@ -160,13 +160,13 @@
 			MaximizeBox = false;
 			MdiChildrenMinimizedAnchorBottom = false;
 			MinimizeBox = false;
+			MinimumSize = new Size(239, 129);
 			Name = "Forge";
-			Opacity = 0.2D;
 			Padding = new Padding(5);
 			ShowIcon = false;
 			ShowInTaskbar = false;
 			TopMost = true;
-			TransparencyKey = Color.DimGray;
+			TransparencyKey = Color.Transparent;
 			Load += Forge_Load;
 			flowLayoutPanel1.ResumeLayout(false);
 			ResumeLayout(false);
