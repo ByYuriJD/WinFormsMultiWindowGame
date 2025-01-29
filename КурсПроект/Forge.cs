@@ -50,7 +50,7 @@ namespace КурсПроект {
 			bool progressNotStarted = toolProgress == -1;
 
 			//Кнопки - Прогресс
-            buttonAxe.Enabled = progressNotStarted;
+			buttonAxe.Enabled = progressNotStarted;
 			buttonPick.Enabled = progress > 2 && progressNotStarted;
 			buttonSword.Enabled = progress > 3 && progressNotStarted;
 			buttonShield.Enabled = progress > 4 && progressNotStarted;
@@ -120,7 +120,7 @@ namespace КурсПроект {
 
 		//+++Кнопки+++
 		//Топор
-		private void buttonAxe_Click(object sender, EventArgs e) { 
+		private void buttonAxe_Click(object sender, EventArgs e) {
 			index = 0;
 			updateMenu();
 		}
@@ -165,6 +165,10 @@ namespace КурсПроект {
 			}
 
 			base.WndProc(ref m);
+		}
+
+		private void priceLabel_Click(object sender, EventArgs e) {
+
 		}
 	}
 }

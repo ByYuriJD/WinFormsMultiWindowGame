@@ -28,16 +28,17 @@
 			progressBar1 = new ProgressBar();
 			button1 = new Button();
 			worldTimer = new System.Windows.Forms.Timer(components);
+			pickNeeded = new Label();
 			SuspendLayout();
 			// 
 			// progressBar1
 			// 
 			progressBar1.Dock = DockStyle.Bottom;
-			progressBar1.Location = new Point(0, 155);
+			progressBar1.Location = new Point(0, 151);
 			progressBar1.Margin = new Padding(0);
 			progressBar1.MarqueeAnimationSpeed = 1;
 			progressBar1.Name = "progressBar1";
-			progressBar1.Size = new Size(126, 15);
+			progressBar1.Size = new Size(122, 15);
 			progressBar1.TabIndex = 5;
 			progressBar1.Value = 100;
 			// 
@@ -50,7 +51,7 @@
 			button1.ForeColor = Color.Azure;
 			button1.Location = new Point(0, 0);
 			button1.Name = "button1";
-			button1.Size = new Size(126, 170);
+			button1.Size = new Size(122, 166);
 			button1.TabIndex = 4;
 			button1.Text = resources.GetString("button1.Text");
 			button1.UseVisualStyleBackColor = false;
@@ -62,12 +63,27 @@
 			worldTimer.Interval = 5;
 			worldTimer.Tick += worldTimer_Tick;
 			// 
+			// pickNeeded
+			// 
+			pickNeeded.BackColor = SystemColors.HotTrack;
+			pickNeeded.BorderStyle = BorderStyle.Fixed3D;
+			pickNeeded.Font = new Font("Showcard Gothic", 7F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			pickNeeded.ForeColor = Color.Navy;
+			pickNeeded.Location = new Point(0, 0);
+			pickNeeded.Name = "pickNeeded";
+			pickNeeded.Size = new Size(32, 30);
+			pickNeeded.TabIndex = 6;
+			pickNeeded.Text = "- .\r\n  / `";
+			pickNeeded.TextAlign = ContentAlignment.MiddleCenter;
+			pickNeeded.Visible = false;
+			// 
 			// StoneFarm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(126, 170);
+			ClientSize = new Size(122, 166);
 			ControlBox = false;
+			Controls.Add(pickNeeded);
 			Controls.Add(progressBar1);
 			Controls.Add(button1);
 			FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -85,5 +101,6 @@
 		private ProgressBar progressBar1;
 		private Button button1;
 		private System.Windows.Forms.Timer worldTimer;
+		private Label pickNeeded;
 	}
 }

@@ -216,9 +216,9 @@ namespace КурсПроект {
 					newCard.setType("Stone");
 				}
 			} else if (progress < 4) {//Кирка
-				if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 6.0) {
+				if (rnd.NextDouble() < .15) {
 					newCard.setType("Ore");
-				} else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {
+				} else if (rnd.NextDouble() < .6) {
 					newCard.setType("Wood");
 				} else {
 					newCard.setType("Stone");
@@ -230,9 +230,9 @@ namespace КурсПроект {
 					spawnEnemyInstead();
 
 					return;
-				} else if (rnd.NextDouble() < (double)(oreCount + 1) / (oreCount + stoneCount + woodCount + 1) / 4.0) {//Руда
+				} else if (rnd.NextDouble() < .2) {//Руда
 					newCard.setType("Ore");
-				} else if (rnd.NextDouble() < (double)(stoneCount + 1) / (stoneCount + woodCount + 1)) {//Дерево
+				} else if (rnd.NextDouble() < .6) {//Дерево
 					newCard.setType("Wood");
 				} else {//Камень
 					newCard.setType("Stone");
@@ -475,7 +475,7 @@ namespace КурсПроект {
 
 					spawnResource("Enemy");
 					//Уменьшает период
-					resourceSpawner.Interval = 6500;
+					resourceSpawner.Interval = 6000;
 
 					break;
 				case 5: // Печь
@@ -494,7 +494,7 @@ namespace КурсПроект {
 
 
 					//Уменьшает интервал
-					resourceSpawner.Interval = 6000;
+					resourceSpawner.Interval = 5000;
 
 					break;
 				case 6: // Древнее древо
@@ -604,11 +604,11 @@ namespace КурсПроект {
 		}
 
         private void woodLabel_Click(object sender, EventArgs e) {
-			setWoodCount(woodCount + 1);
+			//setWoodCount(woodCount + 1);
 		}
 
 		private void stoneLabel_Click(object sender, EventArgs e) {
-			setStoneCount(stoneCount + 1);
+			//setStoneCount(stoneCount + 1);
 		}
 	}
 }

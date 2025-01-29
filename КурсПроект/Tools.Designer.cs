@@ -67,11 +67,9 @@
 			flowLayoutPanel1.Controls.Add(buttonPick);
 			flowLayoutPanel1.Controls.Add(buttonSword);
 			flowLayoutPanel1.Controls.Add(buttonShield);
-			flowLayoutPanel1.Dock = DockStyle.Top;
-			flowLayoutPanel1.Location = new Point(4, 4);
+			flowLayoutPanel1.Location = new Point(42, 4);
 			flowLayoutPanel1.Name = "flowLayoutPanel1";
-			flowLayoutPanel1.Padding = new Padding(35, 0, 0, 0);
-			flowLayoutPanel1.Size = new Size(257, 41);
+			flowLayoutPanel1.Size = new Size(177, 41);
 			flowLayoutPanel1.TabIndex = 5;
 			// 
 			// buttonAxe
@@ -79,7 +77,7 @@
 			buttonAxe.Dock = DockStyle.Top;
 			buttonAxe.Font = new Font("Segoe UI", 9F);
 			buttonAxe.ForeColor = Color.Black;
-			buttonAxe.Location = new Point(38, 3);
+			buttonAxe.Location = new Point(3, 3);
 			buttonAxe.Name = "buttonAxe";
 			buttonAxe.Size = new Size(38, 38);
 			buttonAxe.TabIndex = 0;
@@ -90,7 +88,7 @@
 			// buttonPick
 			// 
 			buttonPick.Dock = DockStyle.Top;
-			buttonPick.Location = new Point(82, 3);
+			buttonPick.Location = new Point(47, 3);
 			buttonPick.Name = "buttonPick";
 			buttonPick.Size = new Size(38, 38);
 			buttonPick.TabIndex = 1;
@@ -101,7 +99,7 @@
 			// buttonSword
 			// 
 			buttonSword.Dock = DockStyle.Top;
-			buttonSword.Location = new Point(126, 3);
+			buttonSword.Location = new Point(91, 3);
 			buttonSword.Name = "buttonSword";
 			buttonSword.Size = new Size(38, 38);
 			buttonSword.TabIndex = 2;
@@ -112,7 +110,7 @@
 			// buttonShield
 			// 
 			buttonShield.Dock = DockStyle.Top;
-			buttonShield.Location = new Point(170, 3);
+			buttonShield.Location = new Point(135, 3);
 			buttonShield.Name = "buttonShield";
 			buttonShield.Size = new Size(38, 38);
 			buttonShield.TabIndex = 3;
